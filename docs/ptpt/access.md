@@ -22,17 +22,17 @@ A gestão direta do utilizador via permissão de atribuição pode ser cansativo
 Um utilizador tem vários sabores de gestão de funções:
 
 ```php
-// Check if the user has rights
-// Check is performed for both user and his role
+// Verifica se o utilizador tem direitos
+// A verificação é realizada para o utilizador e seu papel
 Auth:user()->hasAccess($string);
 
-// Get all roles of the user
+// Obtenha todos os papéis do utilizador
 Auth::user()->getRoles();
 
-// Check if the user has a role
+// Verifica se o utilizador tem uma função
 Auth::user()->inRole($role)
 
-// Add a role to the user
+// Adiciona uma função ao utilizador
 Auth::user()->addRole($role)
 ```
 
@@ -41,7 +41,7 @@ Auth::user()->addRole($role)
 As funções também possuem os seguintes procedimentos:
 
 ```php
-// Returns all users with the role
+// Retorna todos os utilizadores com a função
 $role->getUsers();
 ```
 
@@ -69,33 +69,33 @@ use Orchid\Platform\Kernel\Dashboard;
 
 class PermissionServiceProvider extends ServiceProvider
 {
-    /**
-     * Indicates if loading of the provider is deferred.
-     *
-     * @var bool
-     */
-    protected $defer = false;
+    / **
+     * Nagpapahiwatig kapag ang pag-load ng provider ay pinahinto.
+     *
+     * @var bool
+     * /
+    protected $defer = false;
 
-    /**
-     * @param Dashboard $dashboard
-     */
-    public function boot(Dashboard $dashboard)
-    {
-        $permission = $this->registerPermissions();
-        $dashboard->permission->registerPermissions($permission);
-    }
+    / **
+     * @param Dashboard $dashboard
+     * /
+    public function boot (Dashboard $dashboard)
+    {
+        $permission = $this->registerPermissions ();
+        $dashboard->permission->registerPermissions ($permission);
+    }
 
-    protected function registerPermissions()
-    {
-        return [
-            'Modules' => [
-                [
-                    'slug'        => 'Analytics',
-                    'description' => 'Description',
-                ],
-            ],
+    protected function registerPermissions ()
+    {
+        return [
+            'Modules' => [
+                [
+                    'slug' => 'Analytics',
+                    'description' => 'Description',
+                ],
+            ],
 
-        ];
-    }
+        ];
+    }
 }
 ```
